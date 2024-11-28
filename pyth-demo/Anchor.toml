@@ -1,0 +1,41 @@
+[toolchain]
+
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+pyth_demo = "EZF96kTTwgT9EPGz1aAvvc9ZZ7r74Rv4tA4ARNKroaCE"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "/Users/yurushao/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[test.validator]
+bind_address = "127.0.0.1"
+ledger = ".anchor/test-ledger"
+rpc_port = 8899
+url = "https://api.mainnet-beta.solana.com"
+
+[[test.genesis]]
+address = "rec5EKMGg6MxZYaMdyBfgwp4d5rB9T1VQH5pJv5LtFJ"
+program = "./fixtures/pyth_receiver.so"
+
+[[test.genesis]]
+address = "HDwcJBJXjL9FpJ7UBsYBtaDjsBUhuLCUYoz3zr8SWWaQ"
+program = "./fixtures/wormhole.so"
+
+[[test.validator.clone]]
+address = "5gxPdahvSzcKySxXxPuRXZZ9s6h8hZ88XDVKavWpaQGn"
+
+[[test.validator.clone]]
+address = "DaWUKXCyXsnzcvLUyeJRWou8KTn7XtadgTsdhJ6RHS7b"
+
+[[test.validator.clone]]
+address = "5joJkU4NaAdRWmDvepduyocfvyRcv7ZNLkqENf3419Yc"
